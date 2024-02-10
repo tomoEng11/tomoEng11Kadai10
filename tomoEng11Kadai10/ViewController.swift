@@ -39,18 +39,21 @@ extension ViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomTableViewCell
         cell.nameLabel.text = prefectures[indexPath.row]
         cell.descriptionLabel.text = "\(indexPath.row + 1)番目の都道府県です"
-
-        if (indexPath.row + 1) % 3 == 0 {
-            cell.backgroundColor = .red
-        } else if (indexPath.row + 1) % 3 == 1 {
-            cell.backgroundColor = .blue
-        } else if (indexPath.row + 1) % 3 == 2 {
-            cell.backgroundColor = .green
-        }
+        cell.backgroundColor = colorForIndexPath(indexPath)
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 50
+    }
+
+    private func colorForIndexPath(_ indexPath: IndexPath) -> UIColor {
+        let colorIndex = (indexPath.row + 1) % 3
+               switch colorIndex {
+               case 0: return .red
+               case 1: return .blue
+               case 2: return .green
+               default: return .clear
+               }
     }
 }
