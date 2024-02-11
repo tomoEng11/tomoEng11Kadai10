@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     private let cellClassName = "CustomTableViewCell"
     private let reuseId = "CustomTableViewCell"
     private let prefectures = Model().prefectures
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
