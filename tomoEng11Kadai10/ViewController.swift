@@ -8,19 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private let cellClassName = "CustomTableViewCell"
+    private let reuseId = "CustomTableViewCell"
     private let prefectures = Model().prefectures
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
-        return tableView
-    }()
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.frame = view.bounds
+        tableView.register(UINib(nibName: cellClassName, bundle: nil), forCellReuseIdentifier: reuseId)
     }
 }
 //MARK: - TableViewDelegate
@@ -36,7 +33,9 @@ extension ViewController: UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as? CustomTableViewCell else {
+            return UITableViewCell()
+        }
         cell.nameLabel.text = prefectures[indexPath.row]
         cell.descriptionLabel.text = "\(indexPath.row + 1)番目の都道府県です"
         cell.backgroundColor = colorForIndexPath(indexPath)

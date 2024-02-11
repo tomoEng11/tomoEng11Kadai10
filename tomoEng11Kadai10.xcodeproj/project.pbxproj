@@ -15,6 +15,7 @@
 		BB6A37AF2B776759001B8F02 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6A37AD2B776759001B8F02 /* CustomTableViewCell.swift */; };
 		BB6A37B02B776759001B8F02 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6A37AE2B776759001B8F02 /* CustomTableViewCell.xib */; };
 		BB6A37B22B7771CA001B8F02 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6A37B12B7771CA001B8F02 /* Model.swift */; };
+		BB6A37D62B78605E001B8F02 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6A37D52B78605E001B8F02 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BB6A37AD2B776759001B8F02 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		BB6A37AE2B776759001B8F02 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		BB6A37B12B7771CA001B8F02 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		BB6A37D52B78605E001B8F02 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				BB6A37952B772611001B8F02 /* AppDelegate.swift */,
 				BB6A37972B772611001B8F02 /* SceneDelegate.swift */,
 				BB6A37992B772611001B8F02 /* ViewController.swift */,
+				BB6A37D52B78605E001B8F02 /* Storyboard.storyboard */,
 				BB6A37AD2B776759001B8F02 /* CustomTableViewCell.swift */,
 				BB6A37B12B7771CA001B8F02 /* Model.swift */,
 				BB6A37AE2B776759001B8F02 /* CustomTableViewCell.xib */,
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB6A37A22B772613001B8F02 /* LaunchScreen.storyboard in Resources */,
+				BB6A37D62B78605E001B8F02 /* Storyboard.storyboard in Resources */,
 				BB6A379F2B772613001B8F02 /* Assets.xcassets in Resources */,
 				BB6A37B02B776759001B8F02 /* CustomTableViewCell.xib in Resources */,
 			);
