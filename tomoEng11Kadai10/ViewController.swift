@@ -49,9 +49,9 @@ extension ViewController: UITableViewDataSource{
     private func colorForIndexPath(_ indexPath: IndexPath) -> UIColor {
         let colorIndex = (indexPath.row + 1) % 3
                switch colorIndex {
-               case 0: return .red
-               case 1: return .blue
-               case 2: return .green
+               case 0: return .systemBlue
+               case 1: return .systemPink
+               case 2: return .systemGreen
                default: return .clear
                }
     }
