@@ -8,7 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private let cellClassName = "CustomTableViewCell"
     private let reuseId = "CustomTableViewCell"
     private let prefectures = Model().prefectures
     @IBOutlet private weak var tableView: UITableView!
@@ -16,16 +15,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UINib(nibName: cellClassName, bundle: nil), forCellReuseIdentifier: reuseId)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseId)
+        tableView.allowsSelection = false
     }
 }
-//MARK: - TableViewDelegate
-extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
+
 //MARK: - TableViewDataSource
 extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,26 +27,31 @@ extension ViewController: UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as? CustomTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.nameLabel.text = prefectures[indexPath.row]
-        cell.descriptionLabel.text = "\(indexPath.row + 1)番目の都道府県です"
-        cell.backgroundColor = colorForIndexPath(indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath)
+
+        var contentConfiguration = UIListContentConfiguration.valueCell()
+        contentConfiguration.text = prefectures[indexPath.row]
+        contentConfiguration.secondaryText = "\(indexPath.row + 1)番目の都道府県です"
+        cell.contentConfiguration = contentConfiguration
+
+        var backgroundConfiguration = cell.defaultBackgroundConfiguration()
+        backgroundConfiguration.backgroundColor = colorForIndexPath(indexPath)
+        cell.backgroundConfiguration = backgroundConfiguration
+
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 50
+        return 50
     }
 
     private func colorForIndexPath(_ indexPath: IndexPath) -> UIColor {
-        let colorIndex = (indexPath.row + 1) % 3
-               switch colorIndex {
-               case 0: return .systemBlue
-               case 1: return .systemPink
-               case 2: return .systemGreen
-               default: return .clear
-               }
+        let colorIndex = indexPath.row % 3
+
+        switch colorIndex {
+        case 0: return .systemPink
+        case 1: return .systemGreen
+        default: return .systemBlue
+        }
     }
 }
